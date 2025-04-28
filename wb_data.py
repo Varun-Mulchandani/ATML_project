@@ -14,13 +14,9 @@ class WaterBirdsDataset(Dataset):
             split_i = ["train", "val", "test"].index(split)
         except ValueError:
             raise(f"Unknown split {split}")
-        #metadata_df = pd.read_csv(os.path.join(basedir, "metadata.csv"))
-        #metadata_df = pd.read_csv(os.path.join(basedir, "../new_metadata_nonoracle_75.csv"))
-        metadata_df = pd.read_csv(os.path.join(basedir, "../new_metadata_95.csv"))
-        #metadata_df = pd.read_csv(os.path.join(basedir, "../new_metadata_3.csv"))
-        #print(len(metadata_df))
+        metadata_df = pd.read_csv(os.path.join(basedir, "metadata.csv"))
+        #metadata_df = pd.read_csv(os.path.join(basedir, "../new_metadata.csv"))
         self.metadata_df = metadata_df[metadata_df["split"] == split_i]
-        #print(len(self.metadata_df))
         self.basedir = basedir
         self.transform = transform
         self.y_array = self.metadata_df['y'].values

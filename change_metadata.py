@@ -17,4 +17,4 @@ for i in tqdm(range(d.shape[0])):
 print(len(indices))
 d = d.drop(index = indices)
 
-d.to_csv('new_metadata_95.csv')
+d.to_csv('new_metadata.csv')
