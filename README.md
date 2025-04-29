@@ -22,6 +22,11 @@ python3 change_metadata.py
 
 python3 train_classifier.py --output_dir=output --pretrained_model --num_epochs=100 --weight_decay=1e-3 --batch_size=128 --init_lr=1e-3 --eval_freq=1 --data_dir=waterbird_complete95_forest2water2 --test_wb_dir=waterbird_complete95_forest2water2 --seed=1
 
+# Run DFR
+
+python3 balance_groups_dfr.py
+python3 dfr_evaluate_spurious.py --data_dir=waterbird_complete95_forest2water2 --result_path=output --ckpt_path=output/final_checkpoint.pt --tune_class_weights_dfr_train
+
 # Train a model to learn only domain specific features with Adaptive Regularization.
 
 python3 train_classifier_ar.py --output_dir=output --pretrained_model --num_epochs=63 --weight_decay=1e-3 --batch_size=128 --init_lr=1e-3 --eval_freq=1 --data_dir=waterbird_complete95_forest2water2 --test_wb_dir=waterbird_complete95_forest2water2 --seed=1
